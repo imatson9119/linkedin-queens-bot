@@ -34,7 +34,7 @@ def main():
     driver.get('https://www.linkedin.com/games/queens/')
     
     # Initialize human-like cursor movements
-    cursor = WebCursor(driver, 1.5)
+    cursor = WebCursor(driver)
     
     # Click the start button to begin the game
     start_button = driver.find_element(By.ID, 'launch-footer-start-button')
