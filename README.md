@@ -69,4 +69,4 @@ python -m linkedin_queens_bot.main
 ## 🙋 Author
 
 Made by Ian Matson
-📧 [imatson9119@gmail.com](mailto:imatson9119@gmail.com)
+📧 [howdy@ian-matson.com](mailto:howdy@ian-matson.com)
