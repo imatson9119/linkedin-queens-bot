@@ -1,0 +1,23 @@
+[project]
+name = "linkedin-queens-bot"
+version = "0.1.0"
+description = "A bot for the linkedin queens game"
+authors = [
+    {name = "Ian",email = "imatson9119@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "undetected-chromedriver (>=3.5.5,<4.0.0)",
+    "selenium (>=4.32.0,<5.0.0)",
+    "humancursor (>=1.1.5,<2.0.0)",
+]
+
+[tool.poetry]
+packages = [
+    { include = "linkedin_queens_bot", from = "." }
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
