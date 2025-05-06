@@ -35,16 +35,25 @@ def main():
     
     # Initialize human-like cursor movements
     cursor = WebCursor(driver)
-    
+    cursor.show_cursor()
     # Click the start button to begin the game
-    start_button = driver.find_element(By.ID, 'launch-footer-start-button')
-    cursor.move_to(start_button)
-    cursor.click_on(start_button)
+    start_button = None
+    try:
+        start_button = driver.find_element(By.ID, 'launch-footer-start-button')
+    except:
+        pass
+    if start_button:
+        cursor.move_to(start_button)
+        cursor.click_on(start_button)
 
     # Check if tutorial is showing and skip it if present
-    tutorial = driver.find_element(By.CLASS_NAME, 'queens-tutorial-modal')
+    tutorial = None
+    try:
+        tutorial = driver.find_element(By.CLASS_NAME, 'queens-tutorial-modal')
+    except:
+        pass
     if tutorial:
-        skip_button = tutorial.find_element(By.ID, 'ember87')
+        skip_button = tutorial.find_element(By.CSS_SELECTOR, '[data-test-modal-close-btn]')
         cursor.move_to(skip_button)
         cursor.click_on(skip_button)
 
