@@ -34,8 +34,8 @@ def main():
     driver.get('https://www.linkedin.com/games/queens/')
     
     # Initialize human-like cursor movements
-    cursor = WebCursor(driver)
-    cursor.show_cursor()
+    # cursor = WebCursor(driver)
+    # cursor.show_cursor()
     # Click the start button to begin the game
     start_button = None
     try:
@@ -43,8 +43,9 @@ def main():
     except:
         pass
     if start_button:
-        cursor.move_to(start_button)
-        cursor.click_on(start_button)
+        # cursor.move_to(start_button)
+        # cursor.click_on(start_button)
+        start_button.click()
 
     # Check if tutorial is showing and skip it if present
     tutorial = None
@@ -54,8 +55,9 @@ def main():
         pass
     if tutorial:
         skip_button = tutorial.find_element(By.CSS_SELECTOR, '[data-test-modal-close-btn]')
-        cursor.move_to(skip_button)
-        cursor.click_on(skip_button)
+        # cursor.move_to(skip_button)
+        # cursor.click_on(skip_button)
+        skip_button.click()
 
     # Get the game board and analyze its structure
     queens_board = driver.find_element(By.ID, 'queens-grid')
@@ -98,14 +100,14 @@ def main():
 
     # Place queens on the board based on solver's solution
     for r, c in sorted(solver.queens):
-        queen_on_cell(cursor, driver, r, c, n)
+        queen_on_cell(driver, r, c, n)
 
     # Take a screenshot of the solved board
     driver.save_screenshot('linkedin.png')
     input("Press Enter to quit...")
     driver.quit()
 
-def queen_on_cell(cursor, driver, r, c, n):
+def queen_on_cell(driver, r, c, n):
     """
     Places a queen on the specified cell using human-like cursor movements.
     
@@ -117,9 +119,11 @@ def queen_on_cell(cursor, driver, r, c, n):
         n: Board size
     """
     cell = driver.find_element(By.XPATH, f'//*[@data-cell-idx="{r*n + c}"]')
-    cursor.move_to(cell)
-    cursor.click_on(cell)
-    cursor.click_on(cell)
+    # cursor.move_to(cell)
+    # cursor.click_on(cell)
+    # cursor.click_on(cell)
+    cell.click()
+    cell.click()
 
 if __name__ == '__main__':
     freeze_support()
